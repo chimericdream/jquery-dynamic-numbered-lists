@@ -1,21 +1,39 @@
-(function( $ ){
-    $.fn.dynumlist = function( options ) {
+;(function($, window, document, undefined) {
+    var pluginName = 'dynumlist',
+        defaults = {
+            start: 1
+        },
+        size = 0;
 
-        var settings = {
-            'start' : 1
-        };
+    function Plugin(element, options, size) {
+        this.element   = element;
+        this.options   = $.extend({}, defaults, options);
+        this._defaults = defaults;
+        this._name     = pluginName;
+        
+        this.init(size);
+    }
 
-        if ( options ) {
-            $.extend( settings, options );
-        }
+    Plugin.prototype.init = function(size) {
+        var nextstart = this.options['start'];
+        nextstart += size;
+        $(this.element).attr('start', nextstart);
+    };
 
-        var nextstart = settings['start'];
+    Plugin.prototype.getSize = function() {
+        return $(this.element).children().size();
+    };
+
+    $.fn.dynumlist = function(options) {
         var size = 0;
-
+        
         return this.each(function() {
-            nextstart += size;
-            $(this).attr('start', nextstart);
-            size = $(this).children().size();
+            if (!$.data(this, 'plugin_' + pluginName)) {
+                var list = new Plugin(this, options, size);
+                $.data(this, 'plugin_' + pluginName, list);
+                
+                size += list.getSize();
+            }
         });
     };
-})( jQuery );
+})(jQuery, window, document);

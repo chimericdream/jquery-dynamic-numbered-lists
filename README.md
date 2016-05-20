@@ -1,18 +1,18 @@
-jQuery Dynamic Numbered Lists
+[![Version 1.0](https://img.shields.io/badge/version-1.0-brightgreen.svg)](https://github.com/chimericdream/jquery-dynamic-numbered-lists)
+[![GitHub issues](https://img.shields.io/github/issues/chimericdream/jquery-dynamic-numbered-lists.svg)](https://github.com/chimericdream/jquery-dynamic-numbered-lists/issues)
+[![jQuery 1.6.4](https://img.shields.io/badge/jQuery-1.6.4-red.svg)](https://jquery.com/)
+
+### jQuery Dynamic Numbered Lists
 
 This plugin turns a series of ordered lists into a single contiguous stream. For example, if you have several sets of ordered lists on your page containing a coherent set of data, but they are separated by content (e.g. sections of data with descriptions between), you have two options: 1) you can specify the starting number for each individual ordered list after the first and keep it up to date as you add/remove items; or 2) you can use this plugin to target all the lists at once and never worry about it again!
 
-Description
-Version: 1.0
-Author: Bill Parrott
-Tested with jQuery: 1.6.4
-Last Updated: 2011/10/22
-Download Link: https://github.com/chimericdream/jquery-dynamic-numbered-lists
+#### Usage Instructions
 
-Usage Instructions
-Create your lists using standard <ol> tags. If you plan to have more than one group of dynamically numbered lists, give them discreet classes.
+Create your lists using standard `<ol>` tags. If you plan to have more than one group of dynamically numbered lists, give them discreet classes.
 
-Example:
+##### Example:
+
+```html
 <ol class="dynum">
     <li>Item #1</li>
     <li>Item #2</li>
@@ -45,13 +45,19 @@ Some content here...
     <li>Item #20</li>
 </ol>
 ...
+```
 
 Next, simply initialize the dynamic numbered lists by calling the plugin. This will add dynamically renumber all the lists after the first based on how many items have occurred thus far.
+
+```javascript
 $('ol.dynum').dynumlist();
+```
 
-Demo
-The included demo shows the lists above both with and without the dynamic numbering.
+#### Demo
 
-Change Log
+[The demo](https://jsfiddle.net/5pumrd43/) shows the lists above both with and without the dynamic numbering.
+
+#### Change Log
+
 Version 1.0 (2011/10/22); Initial release
     All plugin functionality included
